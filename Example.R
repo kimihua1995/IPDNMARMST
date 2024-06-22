@@ -8,23 +8,27 @@ library(survminer)
 library(R2jags)
 library(MCMCvis)
 library(mvmeta)
+library(devtools)
+#install_github("kimihua1995/IPDNMARMST")  # uncomment to install the R pacakge "IPDNMARMST"
+library(IPDNMARMST)
 
 
-load("sim_data.RData")
-
-
+# load simulated data
+data(sim_data)
 head(data)
+
+
 covX <- "trt1 + trt2 + trt3 + trt1:X + trt2:X + trt3:X"
 tau <- 4
 
 
 # 1) Proposed Two-Stage IPD-NMA RMST Model
-fit_two <- fit.adj.two(data, tau, covX)
+fit_two <- fit.adj.two(data, tau, covX, quasi())
 summary(fit_two)
 
 
 # 2) Proposed One-Stage IPD-NMA RMST Model
-fit_one <- fit.adj.one(data, tau, covX)
+fit_one <- fit.adj.one(data, tau, covX, quasi())
 summary(fit_one)
 
 

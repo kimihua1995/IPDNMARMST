@@ -1,4 +1,4 @@
-fit.adj.one <- function(data,tau,covX){
+fit.adj.one <- function(data,tau,covX,family){
   nt <- length(table(data$trial))
   ntrt <- length(table(data$trt))
   weights <- cen.weight(data,ntrt=ntrt,nt=nt,t=tau)
@@ -10,7 +10,7 @@ fit.adj.one <- function(data,tau,covX){
                        #fixed = Y ~ -1 + trt1 + trt2 + trt3 + trt1:X + trt2:X + trt3:X,
                        random = as.formula(paste0("~ -1 + ", covX, " | trial")),
                        #random = ~ -1 + trt1 + trt2 + trt3 + trt1:X + trt2:X + trt3:X | trial,
-                       family = quasipoisson(),
+                       family = family,
                        data = data_fit,
                        weights = data_fit$weight,
                        control = list(opt = "optim"), niter = 100, verbose = F)

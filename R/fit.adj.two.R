@@ -1,4 +1,4 @@
-fit.adj.two <- function(data,tau,covX){
+fit.adj.two <- function(data,tau,covX,family){
   nt <- length(table(data$trial))
   ntrt <- length(table(data$trt))
   weights <- cen.weight(data,ntrt=ntrt,nt=nt,t=tau)
@@ -11,7 +11,7 @@ fit.adj.two <- function(data,tau,covX){
     dataj <- data_w[data_w$trial==j,]
     fit <- glm(formula = paste0("Y ~ -1 + ", covX),
                #Y ~ -1 + trt1 + trt2 + trt3 + trt1:X + trt2:X + trt3:X,
-               family = quasipoisson(), weights = weight, data = dataj)
+               family = family, weights = weight, data = dataj)
     rmst_m <- rbind(rmst_m, coef(fit))
     vcov_fit <- vcov(fit)
     S <- rbind(S, as.vector(vcov_fit[lower.tri(vcov_fit,diag = T)]))

@@ -32,4 +32,25 @@ Tang, X., & Trinquart, L. (2022). Bayesian multivariate network meta‐analysis 
 
 
 \examples{
+df=5
+Omega=diag(1,3)
+jag_model <- function(){
+  for (i in 1:N) {
+    y[i] ~ dnorm(mean[s[i],t[i]], prec[i])
+    prec[i] <- 1/pow(sd[i],2)
+    mean[s[i],t[i]] <- mu[t[i]] + v[s[i],t[i]]
+  }
+
+
+  for (j in 1:NS) { v[j, 1:NT] ~ dmnorm(zero.AB[1:NT], invR[1:NT, 1:NT]) }
+
+  invR[1:NT, 1:NT] ~ dwish(Omega[ , ],df)
+  R[1:NT, 1:NT] <- inverse(invR[1:NT, 1:NT])
+
+
+  for (k in 1:NT) {
+    mu[k] ~ dnorm(0, 0.001)
+    tau[k] <- sqrt(R[k,k])
+  }
+}
 }
