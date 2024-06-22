@@ -20,6 +20,7 @@ install_github("kimihua1995/IPDNMARMST")
 see `Example.R`
 
 <h3>Reference</h3>
+
 Hua, K., Wang, X., & Hong, H. (2023). Network Meta-Analysis of Time-to-Event Endpoints with Individual Participant Data using Restricted Mean Survival Time Regression. arXiv preprint arXiv:2310.13162.
 
 Weir, I. R., Tian, L., & Trinquart, L. (2021). Multivariate meta-analysis model for the difference in restricted mean survival times. Biostatistics, 22(1), 82-96.
