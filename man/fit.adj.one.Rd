@@ -1,0 +1,31 @@
+\name{fit.adj.one}
+\alias{fit.adj.one}
+%- Also NEED an '\alias' for EACH other topic documented here.
+\title{
+One-Stage RMST IPD-NMA Model
+}
+\description{
+Fit the individual participant level network meta-analysis with time-to-event endpoint using the one-stage RMST IPD-NMA model. This model allows incorporating individual covariate data.
+}
+\usage{
+fit.adj.one(data,tau,covX)
+}
+%- maybe also 'usage' for other objects documented here.
+\arguments{
+\item{data}{a data frame including "time": time-to-event, "status": censoring indicator; "trial": study id, "trt": factor treatment groups, and other covariates of interests.}
+\item{tau}{truncation time for RMST.}
+\item{covX}{a vector of variables in the formula, e.g., covX = "trt1 + trt2 + trt3 + trt1:X + trt2:X + trt3:X".}
+}
+\details{
+%%  ~~ If necessary, more details than the description above ~~
+}
+\value{
+A object of class `c("glmmPQL", "lme")`. See more details in MASS::glmmPQL().
+}
+\references{
+Hua, K., Wang, X., & Hong, H. (2023). Network Meta-Analysis of Time-to-Event Endpoints with Individual Participant Data using Restricted Mean Survival Time Regression. arXiv preprint arXiv:2310.13162.
+}
+
+
+\examples{
+}

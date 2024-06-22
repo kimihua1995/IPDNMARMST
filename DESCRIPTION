@@ -1,0 +1,11 @@
+Package: IPDNMARMST
+Type: Package
+Title: Individual Participant Level Network Meta-Analysis using RMST Regression
+Version: 0.1.0
+Author: Kaiyuan Hua
+Maintainer: The package maintainer <yourself@somewhere.net>
+Description: More about what it does (maybe more than one line)
+    Use four spaces when indenting paragraphs within the Description.
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
